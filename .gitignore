@@ -1,0 +1,5 @@
+mysql/data/*
+product/image/*
+!.gitkeep
+
+.DS_Store

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  php:
+    container_name: php
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - .:/var/www/html
+    ports:
+      - "80:80"
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    links:
+      - mysql
+    ports:
+      - 8888:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
