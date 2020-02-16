@@ -11,7 +11,7 @@ require_once('../common/head.php');
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center my-3">会員ログイン ※ jiro@sample.com / pass</h5>
+            <h5 class="card-title text-center my-3">会員ログイン</h5>
             <form class="form-signin" method="post" action="member_login_check.php">
               <div class="form-label-group">
                 <input type="text" name="code" class="form-control" placeholder="登録メールアドレス" required autofocus>
